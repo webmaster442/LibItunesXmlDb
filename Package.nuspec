@@ -5,9 +5,9 @@
     <version>1.0.0</version>
     <authors>Webmaster442</authors>
     <owners>Webmaster442</owners>
-    <licenseUrl>https://raw.githubusercontent.com/webmaster442/LibItunesXmlDb/master/LICENSE</licenseUrl>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/webmaster442/LibItunesXmlDb</projectUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>An iTunes XML Database parser</description>
     <releaseNotes>Initial release</releaseNotes>
     <copyright>Copyright 2018 Webmaster442</copyright>

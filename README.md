@@ -15,3 +15,5 @@ Original project url: https://github.com/asciamanna/iTunesLibraryParser
      + .net 4.5
      + .net 4.7 
  * Available as a nuget package
+
+Documentation: https://github.com/webmaster442/LibItunesXmlDb/wiki/
