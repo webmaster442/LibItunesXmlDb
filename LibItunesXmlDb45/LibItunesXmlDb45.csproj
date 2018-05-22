@@ -4,19 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4F887EA6-858F-4968-8907-BC413794560C}</ProjectGuid>
+    <ProjectGuid>{6F848705-E3E0-4D0E-B677-C893EC578C1F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Webmaster442.LibItunesXmlDb</RootNamespace>
     <AssemblyName>Webmaster442.LibItunesXmlDb</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\lib\net47\</OutputPath>
+    <OutputPath>..\bin\lib\net45\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,11 +24,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\lib\net47\</OutputPath>
+    <OutputPath>..\bin\lib\net45\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\lib\net47\Webmaster442.LibItunesXmlDb.xml</DocumentationFile>
+    <DocumentationFile>..\bin\lib\net45\Webmaster442.LibItunesXmlDb.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -38,18 +38,27 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="FilterKind.cs" />
-    <Compile Include="IITunesXmlDb.cs" />
-    <Compile Include="Internals\Parser.cs" />
-    <Compile Include="ITunesXmlDb.cs" />
-    <Compile Include="Track.cs" />
+    <Compile Include="..\LibItunesXmlDb\FilterKind.cs">
+      <Link>FilterKind.cs</Link>
+    </Compile>
+    <Compile Include="..\LibItunesXmlDb\IITunesXmlDb.cs">
+      <Link>IITunesXmlDb.cs</Link>
+    </Compile>
+    <Compile Include="..\LibItunesXmlDb\Internals\Parser.cs">
+      <Link>Parser.cs</Link>
+    </Compile>
+    <Compile Include="..\LibItunesXmlDb\ITunesXmlDb.cs">
+      <Link>ITunesXmlDb.cs</Link>
+    </Compile>
+    <Compile Include="..\LibItunesXmlDb\Track.cs">
+      <Link>Track.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

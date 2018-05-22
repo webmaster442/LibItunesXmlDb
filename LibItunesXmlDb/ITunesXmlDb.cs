@@ -6,6 +6,9 @@ using Webmaster442.LibItunesXmlDb.Internals;
 
 namespace Webmaster442.LibItunesXmlDb
 {
+    /// <summary>
+    /// A class for Interacting iTunes xml database 
+    /// </summary>
     public class ITunesXmlDb: IITunesXmlDb
     {
         private XDocument _xml;
@@ -43,6 +46,7 @@ namespace Webmaster442.LibItunesXmlDb
                    select x;
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Track> Tracks
         {
             get
@@ -64,26 +68,31 @@ namespace Webmaster442.LibItunesXmlDb
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<string> Albums
         {
             get { return Tracks.Select(t => t.Album).OrderBy(t => t).Distinct(); }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<string> Artists
         {
             get { return Tracks.Select(t => t.Artist).OrderBy(t => t).Distinct(); }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<string> Genres
         {
             get { return Tracks.Select(t => t.Genre).OrderBy(t => t).Distinct(); }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<string> Years
         {
             get { return Tracks.Select(t => t.Year.ToString()).OrderBy(t => t).Distinct(); }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<string> Playlists
         {
             get
@@ -96,6 +105,7 @@ namespace Webmaster442.LibItunesXmlDb
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Track> Filter(FilterKind kind, string param)
         {
             switch (kind)
@@ -114,6 +124,7 @@ namespace Webmaster442.LibItunesXmlDb
             }
         }
 
+        /// <inheritdoc/>
         public IEnumerable<Track> ReadPlaylist(string id)
         {
             var playlistNodes = LoadPlaylists();

@@ -3,29 +3,93 @@ using System.Collections.Generic;
 
 namespace Webmaster442.LibItunesXmlDb
 {
+    /// <summary>
+    /// A class representing tracks in the iTunes Database
+    /// </summary>
     public class Track : IEquatable<Track>
     {
+        /// <summary>
+        /// Track Id
+        /// </summary>
         public int TrackId { get; set; }
+        /// <summary>
+        /// Track Title
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Track Artist
+        /// </summary>
         public string Artist { get; set; }
+        /// <summary>
+        /// Track Album Artist
+        /// </summary>
         public string AlbumArtist { get; set; }
+        /// <summary>
+        /// Track Composer
+        /// </summary>
         public string Composer { get; set; }
+        /// <summary>
+        /// Track Album
+        /// </summary>
         public string Album { get; set; }
+        /// <summary>
+        /// Track Genre
+        /// </summary>
         public string Genre { get; set; }
+        /// <summary>
+        /// Track Kind
+        /// </summary>
         public string Kind { get; set; }
+        /// <summary>
+        /// Track size in bytes
+        /// </summary>
         public long Size { get; set; }
+        /// <summary>
+        /// Track length
+        /// </summary>
         public string PlayingTime { get; set; }
+        /// <summary>
+        /// Track number
+        /// </summary>
         public int? TrackNumber { get; set; }
+        /// <summary>
+        /// Track year
+        /// </summary>
         public int? Year { get; set; }
+        /// <summary>
+        /// Last modification date
+        /// </summary>
         public DateTime? DateModified { get; set; }
+        /// <summary>
+        /// Date added
+        /// </summary>
         public DateTime? DateAdded { get; set; }
+        /// <summary>
+        /// Track bitrate
+        /// </summary>
         public int? BitRate { get; set; }
+        /// <summary>
+        /// Track sample rate
+        /// </summary>
         public int? SampleRate { get; set; }
+        /// <summary>
+        /// Play count
+        /// </summary>
         public int? PlayCount { get; set; }
+        /// <summary>
+        /// Last play date
+        /// </summary>
         public DateTime? PlayDate { get; set; }
+        /// <summary>
+        /// Part of compilation flag
+        /// </summary>
         public bool PartOfCompilation { get; set; }
+        /// <summary>
+        /// File Path
+        /// </summary>
         public string FilePath { get; set; }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         public override bool Equals(object obj)
         {
             return Equals(obj as Track);
@@ -91,5 +155,6 @@ namespace Webmaster442.LibItunesXmlDb
         {
             return !(track1 == track2);
         }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }
