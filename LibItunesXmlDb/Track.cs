@@ -24,6 +24,7 @@ namespace Webmaster442.LibItunesXmlDb
         public int? PlayCount { get; set; }
         public DateTime? PlayDate { get; set; }
         public bool PartOfCompilation { get; set; }
+        public string FilePath { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -51,12 +52,13 @@ namespace Webmaster442.LibItunesXmlDb
                    EqualityComparer<int?>.Default.Equals(SampleRate, other.SampleRate) &&
                    EqualityComparer<int?>.Default.Equals(PlayCount, other.PlayCount) &&
                    EqualityComparer<DateTime?>.Default.Equals(PlayDate, other.PlayDate) &&
-                   PartOfCompilation == other.PartOfCompilation;
+                   PartOfCompilation == other.PartOfCompilation &&
+                   FilePath == other.FilePath;
         }
 
         public override int GetHashCode()
         {
-            var hashCode = 2126469610;
+            var hashCode = 404681566;
             hashCode = hashCode * -1521134295 + TrackId.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Artist);
@@ -76,6 +78,7 @@ namespace Webmaster442.LibItunesXmlDb
             hashCode = hashCode * -1521134295 + EqualityComparer<int?>.Default.GetHashCode(PlayCount);
             hashCode = hashCode * -1521134295 + EqualityComparer<DateTime?>.Default.GetHashCode(PlayDate);
             hashCode = hashCode * -1521134295 + PartOfCompilation.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FilePath);
             return hashCode;
         }
 

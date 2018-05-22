@@ -50,8 +50,15 @@ namespace Webmaster442.LibItunesXmlDb
                 if (_tracks == null)
                 {
                     var trackElements = LoadTrackElements();
-                    _tracks = new List<Track>(from track in trackElements
-                                              select Parser.CreateTrack(track, _normalize));
+
+                    _tracks = new List<Track>(trackElements.Count());
+
+                    foreach (var trackElement in trackElements)
+                    {
+                        var track = Parser.CreateTrack(trackElement, _normalize);
+                        if (track == null) continue;
+                        else _tracks.Add(track);
+                    }
                 }
                 return _tracks;
             }

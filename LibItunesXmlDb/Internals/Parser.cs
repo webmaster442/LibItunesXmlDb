@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Web;
 using System.Xml.Linq;
 
 namespace Webmaster442.LibItunesXmlDb.Internals
@@ -55,8 +57,57 @@ namespace Webmaster442.LibItunesXmlDb.Internals
             return ts.ToString("m\\:ss");
         }
 
+        public static string UrlDecode(string url)
+        {
+            if (string.IsNullOrEmpty(url))
+                return null;
+
+            if (url.StartsWith("file://localhost/"))
+            {
+                url = url.Replace("file://localhost/", "");
+                url = url.Replace("/", @"\");
+                var replacetable = FillTable();
+
+                url = HttpUtility.UrlDecode(url);
+
+                if (url.Contains("&#"))
+                {
+                    foreach (var item in replacetable)
+                    {
+                        if (url.Contains(item.Key))
+                        {
+                            url = url.Replace(item.Key, item.Value);
+                        }
+                    }
+                }
+
+                return url;
+            }
+            else
+            {
+                return url;
+            }
+        }
+
+        private static Dictionary<string, string> FillTable()
+        {
+            Dictionary<string, string> decode = new Dictionary<string, string>();
+            for (int i=32; i<128; ++i)
+            {
+                decode.Add($"&#{i};", ((char)i).ToString());
+            }
+            return decode;
+        }
+
         public static Track CreateTrack(XElement trackElement, bool normalize)
         {
+            var path = UrlDecode(ParseStringValue(trackElement, "Location"));
+
+            if (normalize && !System.IO.File.Exists(path))
+            {
+                return null;
+            }
+
             return new Track
             {
                 TrackId = Int32.Parse(trackElement.ParseStringValue("Track ID")),
@@ -78,8 +129,8 @@ namespace Webmaster442.LibItunesXmlDb.Internals
                 PlayDate = trackElement.ParseNullableDateValue("Play Date UTC"),
                 PlayCount = trackElement.ParseNullableIntValue("Play Count"),
                 PartOfCompilation = ParseBoolean(trackElement, "Compilation"),
+                FilePath = path
             };
-
         }
     }
 }
