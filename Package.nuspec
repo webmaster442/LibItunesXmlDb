@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Webmaster442.LibItunesXmlDb</id>
+    <version>1.0.0</version>
+    <authors>Webmaster442</authors>
+    <owners>Webmaster442</owners>
+    <licenseUrl>https://raw.githubusercontent.com/webmaster442/LibItunesXmlDb/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/webmaster442/LibItunesXmlDb</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>An iTunes XML Database parser</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2018 Webmaster442</copyright>
+    <tags>iTunes xml database</tags>
+  </metadata>
+  <files>
+    <file src="bin\lib\net40\**" target="lib/net40" />
+	<file src="bin\lib\net45\**" target="lib/net45" />
+	<file src="bin\lib\net40\**" target="lib/net47" />
+</files>
+</package>

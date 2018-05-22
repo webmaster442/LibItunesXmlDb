@@ -1,0 +1,2 @@
+Place nuget.exe here
+https://www.nuget.org/downloads
