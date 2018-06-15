@@ -17,3 +17,7 @@ Original project url: https://github.com/asciamanna/iTunesLibraryParser
  * Available as a nuget package
 
 Documentation: https://github.com/webmaster442/LibItunesXmlDb/wiki/
+
+## Version 2.0:
+
+This version changes the ITunesXmlDb constructor. Now a ITunesXmlDbOptions instance must be passed besides the XML file path. This enables various configruation, like paralel xml parsing for speed.
