@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/webmaster442/LibItunesXmlDb</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>An iTunes XML Database parser</description>
-    <releaseNotes>Initial release</releaseNotes>
+    <releaseNotes>Added option for paralel xml parsing. Constructor arguments changed.</releaseNotes>
     <copyright>Copyright 2018 Webmaster442</copyright>
     <tags>iTunes xml database</tags>
   </metadata>
