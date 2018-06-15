@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Webmaster442.LibItunesXmlDb;
 
 namespace Tests
@@ -19,7 +17,12 @@ namespace Tests
         {
             var basedir = AppDomain.CurrentDomain.BaseDirectory;
             var file = System.IO.Path.Combine(basedir, FilePath);
-            Sut = new ITunesXmlDb(file, false);
+            var testoptions = new ITunesXmlDbOptions
+            {
+                ExcludeNonExistingFiles = false,
+                ParalelParsingEnabled = false
+            };
+            Sut = new ITunesXmlDb(file, testoptions);
         }
 
         [TearDown]
@@ -29,12 +32,45 @@ namespace Tests
         }
 
         [Test]
-        public void EnsureThat_ITunesDb_With_Normalization_Returns_Only_Existing_Files()
+        public void EnsureThat_ITunesDb_With_ExcludeNonExistingFiles_Option_Returns_Only_Existing_Files()
         {
             var basedir = AppDomain.CurrentDomain.BaseDirectory;
             var file = System.IO.Path.Combine(basedir, FilePath);
-            var normalizedDb = new ITunesXmlDb(file, true);
+            var normalizedDb = new ITunesXmlDb(file, new ITunesXmlDbOptions
+            {
+                ParalelParsingEnabled = false,
+                ExcludeNonExistingFiles = true
+            });
             Assert.AreEqual(0, normalizedDb.Tracks.Count());
+        }
+
+        [Test]
+        public void EnsureThat_ITunesDb_With_ParalelParsingEnabled_Option_Returns_Same_AsNonParalel()
+        {
+            var basedir = AppDomain.CurrentDomain.BaseDirectory;
+            var file = System.IO.Path.Combine(basedir, FilePath);
+
+            var paraleldb = new ITunesXmlDb(file, new ITunesXmlDbOptions
+            {
+                ParalelParsingEnabled = true,
+                ExcludeNonExistingFiles = false
+            });
+
+            var db = new ITunesXmlDb(file, new ITunesXmlDbOptions
+            {
+                ParalelParsingEnabled = false,
+                ExcludeNonExistingFiles = false
+            });
+
+            List<Track> tracks = new List<Track>(db.Tracks);
+            List<Track> paralel = new List<Track>(paraleldb.Tracks);
+
+            Assert.AreEqual(tracks.Count, paralel.Count);
+            for (int i= 0; i<tracks.Count; i++)
+            {
+                bool equality = tracks[i] == paralel[i];
+                Assert.AreEqual(true, equality);
+            }
         }
 
         [Test]

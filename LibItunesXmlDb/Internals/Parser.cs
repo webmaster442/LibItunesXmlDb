@@ -99,11 +99,11 @@ namespace Webmaster442.LibItunesXmlDb.Internals
             return decode;
         }
 
-        public static Track CreateTrack(XElement trackElement, bool normalize)
+        public static Track CreateTrack(XElement trackElement, bool exludeNotExistingFiles)
         {
             var path = UrlDecode(ParseStringValue(trackElement, "Location"));
 
-            if (normalize && !System.IO.File.Exists(path))
+            if (exludeNotExistingFiles && !System.IO.File.Exists(path))
             {
                 return null;
             }

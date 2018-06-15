@@ -10,6 +10,7 @@ namespace Webmaster442.LibItunesXmlDb
         /// <summary>
         /// Gets All Tracks from the Database
         /// </summary>
+        /// <seealso cref="Track"/>
         IEnumerable<Track> Tracks { get; }
         /// <summary>
         /// Gets All Album names from the Database
@@ -37,12 +38,14 @@ namespace Webmaster442.LibItunesXmlDb
         /// <param name="kind">Specifies filter kind</param>
         /// <param name="param">Specifies Filter string</param>
         /// <returns>Tracks maching the filter kind and string</returns>
+        /// <seealso cref="Track"/>
         IEnumerable<Track> Filter(FilterKind kind, string param);
         /// <summary>
         /// Gets a Playlists contents
         /// </summary>
         /// <param name="id">Plalist id</param>
         /// <returns>Tracks in the specified playlist</returns>
+        /// <seealso cref="Track"/>
         IEnumerable<Track> ReadPlaylist(string id);
     }
 }

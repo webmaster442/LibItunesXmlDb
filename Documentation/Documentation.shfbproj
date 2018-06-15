@@ -54,7 +54,8 @@
     <MissingTags>Summary, Parameter, Returns, AutoDocumentCtors, TypeParameter, AutoDocumentDispose</MissingTags>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" xmlns="">Main namespace for the libary. Contains all public interfaces and parts for LibItunesXmlDb</NamespaceSummaryItem>
-<NamespaceSummaryItem name="Webmaster442.LibItunesXmlDb" isDocumented="True" xmlns="" /></NamespaceSummaries>
+      <NamespaceSummaryItem name="Webmaster442.LibItunesXmlDb" isDocumented="True" xmlns="" />
+    </NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

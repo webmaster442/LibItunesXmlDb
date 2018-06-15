@@ -89,12 +89,13 @@ namespace Webmaster442.LibItunesXmlDb
         /// </summary>
         public string FilePath { get; set; }
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             return Equals(obj as Track);
         }
 
+        /// <inheritdoc/>
         public bool Equals(Track other)
         {
             return other != null &&
@@ -120,6 +121,7 @@ namespace Webmaster442.LibItunesXmlDb
                    FilePath == other.FilePath;
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             var hashCode = 404681566;
@@ -146,15 +148,26 @@ namespace Webmaster442.LibItunesXmlDb
             return hashCode;
         }
 
+        /// <summary>
+        /// Compares two instances of Track for equality
+        /// </summary>
+        /// <param name="track1">instance to compare</param>
+        /// <param name="track2">other instance to compare</param>
+        /// <returns>true, if the two instances are equal, false if not</returns>
         public static bool operator ==(Track track1, Track track2)
         {
             return EqualityComparer<Track>.Default.Equals(track1, track2);
         }
 
+        /// <summary>
+        /// Compares two instances of Track for inequality
+        /// </summary>
+        /// <param name="track1">instance to compare</param>
+        /// <param name="track2">other instance to compare</param>
+        /// <returns>false, if the two instances are not equal, false if they are</returns>
         public static bool operator !=(Track track1, Track track2)
         {
             return !(track1 == track2);
         }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     }
 }

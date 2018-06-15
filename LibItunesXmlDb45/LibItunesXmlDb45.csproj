@@ -56,6 +56,9 @@
     <Compile Include="..\LibItunesXmlDb\ITunesXmlDb.cs">
       <Link>ITunesXmlDb.cs</Link>
     </Compile>
+    <Compile Include="..\LibItunesXmlDb\ITunesXmlDbOptions.cs">
+      <Link>ITunesXmlDbOptions.cs</Link>
+    </Compile>
     <Compile Include="..\LibItunesXmlDb\Track.cs">
       <Link>Track.cs</Link>
     </Compile>

@@ -49,6 +49,7 @@
     <Compile Include="IITunesXmlDb.cs" />
     <Compile Include="Internals\Parser.cs" />
     <Compile Include="ITunesXmlDb.cs" />
+    <Compile Include="ITunesXmlDbOptions.cs" />
     <Compile Include="Track.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

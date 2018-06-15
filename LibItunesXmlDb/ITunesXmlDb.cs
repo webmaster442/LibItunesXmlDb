@@ -13,18 +13,19 @@ namespace Webmaster442.LibItunesXmlDb
     {
         private XDocument _xml;
         private List<Track> _tracks;
-        private bool _normalize;
+        private ITunesXmlDbOptions _options;
 
         #region ctor
         /// <summary>
         /// Load an iTunes XML File database
         /// </summary>
         /// <param name="fileLocation">full path of iTunes Music Library.xml</param>
-        /// <param name="normalize">if true, then only those files will be returned that exist on the hdd</param>
-        public ITunesXmlDb(string fileLocation, bool normalize = false)
+        /// <param name="options">Parser options. If not specified default options will be used.</param>
+        /// <seealso cref="ITunesXmlDbOptions"/>
+        public ITunesXmlDb(string fileLocation, ITunesXmlDbOptions options)
         {
             _xml = XDocument.Load(fileLocation);
-            _normalize = normalize;
+            _options = options;
         }
         #endregion
 
@@ -55,13 +56,16 @@ namespace Webmaster442.LibItunesXmlDb
                 {
                     var trackElements = LoadTrackElements();
 
-                    _tracks = new List<Track>(trackElements.Count());
+                    var query = from trackElement in LoadTrackElements()
+                                select Parser.CreateTrack(trackElement, _options.ExcludeNonExistingFiles);
 
-                    foreach (var trackElement in trackElements)
+                    if (_options.ParalelParsingEnabled)
                     {
-                        var track = Parser.CreateTrack(trackElement, _normalize);
-                        if (track == null) continue;
-                        else _tracks.Add(track);
+                        _tracks = query.Where(x => x != null).AsParallel().ToList();
+                    }
+                    else
+                    {
+                        _tracks = query.Where(x => x != null).ToList();
                     }
                 }
                 return _tracks;
